@@ -1,0 +1,17 @@
+# Ignore everything IN THE CURRENT FOLDER ONLY. IN FACT, IF I JUST USE *, IT 
+# WILL IGNORE EVERYTHING RECURSIVELY!!!!!!
+/*
+
+# Whitelist some files
+!.gitignore
+!README.md
+
+!.bashrc
+
+!.config/
+.config/*
+!.config/nvim/
+.config/nvim/*
+!.config/nvim/init.vim
+!.config/nvim/coc-settings.json
+!.config/nvim/config/

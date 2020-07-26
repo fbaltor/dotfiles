@@ -1,0 +1,14 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "markdown",
+    "javascript",
+    "html",
+    "css"
+  ],
+
+  "go.disable": {
+    "workspaceFolder": true
+  }
+}
+
