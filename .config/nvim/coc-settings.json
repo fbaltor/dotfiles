@@ -1,14 +1,10 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "go",
-    "markdown",
-    "javascript",
-    "html",
-    "css"
-  ],
+  "eslint.nodePath": "/home/fbaltor/.nvm/versions/node/v14.2.0/lib/node_modules",
+
+  "prettier.singleQuote": true,
+  "prettier.eslintIntegration": true,
 
   "go.disable": {
     "workspaceFolder": true
   }
 }
-

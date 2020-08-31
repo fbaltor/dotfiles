@@ -31,7 +31,10 @@ set statusline+=\ %l:%c
 
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2
 
+" display 80 characters limit 
 highlight ColorColumn ctermbg=white
 set colorcolumn=80
 
 set autochdir
+
+let g:node_client_debug = 1

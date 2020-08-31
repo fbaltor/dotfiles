@@ -122,7 +122,7 @@ export PATH=$PATH:$HOME/tools/neovim/
 export PATH=$PATH:/usr/local/go/bin
 
 # make $PATH and $HOME available for sudo 
-alias sudo='sudo env PATH=$PATH HOME=$HOME'
+alias psudo='sudo env PATH=$PATH HOME=$HOME'
 
 # setting $GOPATH and making available for $PATH
 export GOPATH=$HOME/go/
@@ -136,4 +136,12 @@ alias dgit='/usr/bin/git --git-dir=$HOME/.dgit --work-tree=$HOME'
 
 c() { g++ -std=c++11 -O2 -Wall "$1" -o "out_${1%.*}"; }
 
-alias source='source $HOME/.bashrc'
+alias s='source $HOME/.bashrc'
+
+# NEOVIM: changing log level of coc.nvim
+export NVIM_COC_LOG_LEVEL=debug
+
+
+alias p='python3'
+
+alias n='nvim'
