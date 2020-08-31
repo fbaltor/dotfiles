@@ -134,13 +134,13 @@ export NVM_DIR="$HOME/.nvm"
 
 alias dgit='/usr/bin/git --git-dir=$HOME/.dgit --work-tree=$HOME'
 
+# setting function for C/C++ compilation
 c() { g++ -std=c++11 -O2 -Wall "$1" -o "out_${1%.*}"; }
 
 alias s='source $HOME/.bashrc'
 
 # NEOVIM: changing log level of coc.nvim
 export NVIM_COC_LOG_LEVEL=debug
-
 
 alias p='python3'
 
