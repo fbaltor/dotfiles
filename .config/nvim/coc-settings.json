@@ -6,5 +6,7 @@
 
   "go.disable": {
     "workspaceFolder": true
-  }
+  },
+
+  "python.jediEnabled": false
 }

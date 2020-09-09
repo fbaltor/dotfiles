@@ -38,3 +38,10 @@ set colorcolumn=80
 set autochdir
 
 let g:node_client_debug = 1
+
+" fold method for Python
+"au BufNewFile, BufRead *.py \
+"  set foldmethod=indent
+
+set incsearch
+set ignorecase
