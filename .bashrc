@@ -149,3 +149,8 @@ alias n='nvim'
 alias i='ipython'
 
 alias nb='nvim ~/.bashrc'
+export PATH="$PATH:/opt/mssql-tools/bin"
+export PATH="$PATH:/opt/mssql-tools/bin"
+
+alias admin='psql -h localhost -p 5432 -U admin -d admin'
+export PATH="$PATH:~/azuredatastudio-linux-x64"

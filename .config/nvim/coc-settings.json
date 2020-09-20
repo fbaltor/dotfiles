@@ -1,4 +1,11 @@
 {
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "html",
+    "css"
+  ],
+
   "eslint.nodePath": "/home/fbaltor/.nvm/versions/node/v14.2.0/lib/node_modules",
 
   "prettier.singleQuote": true,
@@ -8,5 +15,9 @@
     "workspaceFolder": true
   },
 
-  "python.jediEnabled": false
+  "python.venvFolders": ["~/.direnv"],
+  "python.jediEnabled": false,
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true
 }
