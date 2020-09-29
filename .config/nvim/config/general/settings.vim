@@ -45,3 +45,6 @@ let g:node_client_debug = 1
 
 set incsearch
 set ignorecase
+
+" Macro for go to closing HTML tag
+runtime macros/matchit.vim
