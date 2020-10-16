@@ -96,7 +96,7 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -Art'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -143,21 +143,23 @@ alias dgit='/usr/bin/git --git-dir=$HOME/.dgit --work-tree=$HOME'
 # setting function for C/C++ compilation
 c() { g++ -std=c++11 -O2 -Wall "$1" -o "out_${1%.*}"; }
 
-alias s='source $HOME/.bashrc'
 
 # NEOVIM: changing log level of coc.nvim
 export NVIM_COC_LOG_LEVEL=debug
 
-alias p='python3'
+# Python source installed
+alias p='python3.9'
+alias pip='pip3.9'
 
+alias s='source $HOME/.bashrc'
 alias n='nvim'
-
 alias i='ipython'
-
 alias nb='nvim ~/.bashrc'
-export PATH="$PATH:/opt/mssql-tools/bin"
-export PATH="$PATH:/opt/mssql-tools/bin"
-
+alias ..='cd ..'
 alias admin='psql -h localhost -p 5432 -U admin -d admin'
+
+export PATH="$PATH:/opt/mssql-tools/bin"
+export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH="$PATH:~/azuredatastudio-linux-x64"
 
+export XDG_CONFIG_HOME=$HOME/.config

@@ -8,7 +8,8 @@ source $HOME/.config/nvim/config/keys/mappings.vim
 source $HOME/.config/nvim/config/plugins/vim-plug.vim
 source $HOME/.config/nvim/config/plugins/coc.vim
 source $HOME/.config/nvim/config/plugins/prettier.vim
-source $HOME/.config/nvim/config/plugins/indentline.vim
+source $HOME/.config/nvim/config/plugins/indentline.vim 
+"source $HOME/.config/nvim/config/plugins/csv.vim
 
 " paths
 source $HOME/.config/nvim/config/general/paths.vim 

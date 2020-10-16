@@ -48,3 +48,6 @@ set ignorecase
 
 " Macro for go to closing HTML tag
 runtime macros/matchit.vim
+
+" set filetype
+":filetype plugin on

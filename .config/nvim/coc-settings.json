@@ -15,9 +15,9 @@
     "workspaceFolder": true
   },
 
-  "python.venvFolders": ["~/.direnv"],
-  "python.jediEnabled": false,
-  "python.formatting.provider": "black",
+  "python.jediEnabled": true,
+  "python.linting.flake8Enabled": true,
   "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true
+  "python.linting.pep8Enabled": false,
+  "python.formatting.provider": "black"
 }

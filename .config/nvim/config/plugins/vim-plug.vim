@@ -7,7 +7,8 @@ Plug 'sheerun/vim-polyglot' " Better syntax support
 Plug 'gregsexton/MatchTag'
 Plug 'Yggdroot/indentLine'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'Vimjas/vim-python-pep8-indent'
+"Plug 'Vimjas/vim-python-pep8-indent'
+"Plug 'chrisbra/csv.vim'
 
 " Initialize plugin system
 call plug#end()
