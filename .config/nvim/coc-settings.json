@@ -1,6 +1,9 @@
 {
+  "diagnostic.enable": true,
+  "diagnostic.level":"error",
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
     "javascript",
     "html",
     "css"
@@ -16,8 +19,10 @@
   },
 
   "python.jediEnabled": true,
+  "python.jediPath":"/home/fbaltor/.local/lib/python3.9/site-packages",
   "python.linting.flake8Enabled": true,
-  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
   "python.linting.pep8Enabled": false,
+  "python.linting.enabled": true,
   "python.formatting.provider": "black"
 }

@@ -5,7 +5,7 @@ syntax enable
 set hidden
 set ruler
 set number
-"set relativenumber
+set relativenumber
 set splitright
 set splitbelow
 set confirm

@@ -60,7 +60,7 @@ if [ "$color_prompt" = yes ]; then
 
   if [ -a ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[33m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[33m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
   else
       PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
   fi
@@ -156,10 +156,18 @@ alias n='nvim'
 alias i='ipython'
 alias nb='nvim ~/.bashrc'
 alias ..='cd ..'
-alias admin='psql -h localhost -p 5432 -U admin -d admin'
+alias admin='psql -h localhost -p 5432 -U admin -d'
 
 export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH="$PATH:~/azuredatastudio-linux-x64"
 
 export XDG_CONFIG_HOME=$HOME/.config
+
+alias s-gcp-deepesg='source $HOME/deep/apps/gcp/proxy/.env'
+alias proxy-gcp='$HOME/deep/apps/gcp/proxy/cloud_sql_proxy -instances=$INSTANCE_CONNECTION_NAME=tcp:5432 -credential_file=$GOOGLE_APPLICATION_CREDENTIALS'
+alias psql-view='psql "${VIEW_DB_CONNINFOSTRING}"'
+
+export VERSION_ID="20.04"
+
+alias lr='ls -R'
