@@ -6,7 +6,8 @@
     "typescript",
     "javascript",
     "html",
-    "css"
+    "css",
+    "vue"
   ],
 
   "eslint.nodePath": "/home/fbaltor/.nvm/versions/node/v14.2.0/lib/node_modules",

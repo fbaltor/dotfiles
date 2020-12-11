@@ -10,5 +10,6 @@ source $HOME/.config/nvim/config/keys/mappings.vim
 source $HOME/.config/nvim/config/theme/theme.vim
 source $HOME/.config/nvim/config/plugins/prettier.vim
 source $HOME/.config/nvim/config/plugins/indentline.vim 
+source $HOME/.config/nvim/config/plugins/vim-closetag.vim
 "source $HOME/.config/nvim/config/plugins/csv.vim
 source $HOME/.config/nvim/config/plugins/coc.vim

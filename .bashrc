@@ -147,10 +147,6 @@ c() { g++ -std=c++11 -O2 -Wall "$1" -o "out_${1%.*}"; }
 # NEOVIM: changing log level of coc.nvim
 export NVIM_COC_LOG_LEVEL=debug
 
-# Python source installed
-alias p='python3.9'
-alias pip='pip3.9'
-
 alias s='source $HOME/.bashrc'
 alias n='nvim'
 alias i='ipython'
@@ -171,3 +167,6 @@ alias psql-view='psql "${VIEW_DB_CONNINFOSTRING}"'
 export VERSION_ID="20.04"
 
 alias lr='ls -R'
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
