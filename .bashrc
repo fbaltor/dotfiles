@@ -94,9 +94,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alFrt'
 alias la='ls -A'
-alias l='ls -Art'
+alias l='ls --format=single-column -Art'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -152,6 +152,7 @@ alias n='nvim'
 alias i='ipython'
 alias nb='nvim ~/.bashrc'
 alias ..='cd ..'
+alias .='ls'
 alias admin='psql -h localhost -p 5432 -U admin -d'
 
 export PATH="$PATH:/opt/mssql-tools/bin"
@@ -161,7 +162,7 @@ export PATH="$PATH:~/azuredatastudio-linux-x64"
 export XDG_CONFIG_HOME=$HOME/.config
 
 alias s-gcp-deepesg='source $HOME/deep/apps/gcp/proxy/.env'
-alias proxy-gcp='$HOME/deep/apps/gcp/proxy/cloud_sql_proxy -instances=$INSTANCE_CONNECTION_NAME=tcp:5432 -credential_file=$GOOGLE_APPLICATION_CREDENTIALS'
+alias proxy-gcp='$HOME/deep/apps/gcp/proxy/cloud_sql_proxy -instances=$INSTANCE_CONNECTION_NAME=tcp:5432'
 alias psql-view='psql "${VIEW_DB_CONNINFOSTRING}"'
 
 export VERSION_ID="20.04"
@@ -170,3 +171,20 @@ alias lr='ls -R'
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+export KBD_BACKLIGHT="/sys/devices/plat^Crm/dell-laptop/leds/dell\:\:kbd_backlight/stop_timeout"
+
+alias kc='gcloud compute ssh --project=deepesg --zone=southamerica-east1-b keycloak-sa-2'
+
+removecontainers() {
+    docker stop $(docker ps -aq)
+    docker rm $(docker ps -aq)
+}
+
+armageddon() {
+    removecontainers
+    docker network prune -f
+    docker rmi -f $(docker images --filter dangling=true -qa)
+    docker volume rm $(docker volume ls --filter dangling=true -q)
+    docker rmi -f $(docker images -qa)
+}

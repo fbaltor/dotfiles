@@ -1,13 +1,16 @@
 {
+  "diagnostic.checkCurrentLine": true,
   "diagnostic.enable": true,
-  "diagnostic.level":"error",
+  "diagnostic.level": "error",
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "typescript",
     "javascript",
     "html",
     "css",
-    "vue"
+    "vue",
+    "python",
+    "json"
   ],
 
   "eslint.nodePath": "/home/fbaltor/.nvm/versions/node/v14.2.0/lib/node_modules",
@@ -20,7 +23,7 @@
   },
 
   "python.jediEnabled": true,
-  "python.jediPath":"/home/fbaltor/.local/lib/python3.9/site-packages",
+  "python.jediPath": "/home/fbaltor/.local/lib/python3.9/site-packages",
   "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": false,
   "python.linting.pep8Enabled": false,
