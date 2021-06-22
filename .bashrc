@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -140,10 +140,6 @@ export NVM_DIR="$HOME/.nvm"
 
 alias dgit='/usr/bin/git --git-dir=$HOME/.dgit --work-tree=$HOME'
 
-# setting function for C/C++ compilation
-c() { g++ -std=c++11 -O2 -Wall "$1" -o "out_${1%.*}"; }
-
-
 # NEOVIM: changing log level of coc.nvim
 export NVIM_COC_LOG_LEVEL=debug
 
@@ -152,7 +148,6 @@ alias n='nvim'
 alias i='ipython'
 alias nb='nvim ~/.bashrc'
 alias ..='cd ..'
-alias .='ls'
 alias admin='psql -h localhost -p 5432 -U admin -d'
 
 export PATH="$PATH:/opt/mssql-tools/bin"
@@ -161,9 +156,8 @@ export PATH="$PATH:~/azuredatastudio-linux-x64"
 
 export XDG_CONFIG_HOME=$HOME/.config
 
-alias s-gcp-deepesg='source $HOME/deep/apps/gcp/proxy/.env'
+INSTANCE_CONNECTION_NAME=deepesg:us-central1:deepesg-database
 alias proxy-gcp='$HOME/deep/apps/gcp/proxy/cloud_sql_proxy -instances=$INSTANCE_CONNECTION_NAME=tcp:5432'
-alias psql-view='psql "${VIEW_DB_CONNINFOSTRING}"'
 
 export VERSION_ID="20.04"
 
@@ -188,3 +182,7 @@ armageddon() {
     docker volume rm $(docker volume ls --filter dangling=true -q)
     docker rmi -f $(docker images -qa)
 }
+
+# Check $HOME/.scripts for custom commands and bash snippet
+
+alias git-stats='$HOME/git-quick-stats/git-quick-stats'

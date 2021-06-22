@@ -10,7 +10,8 @@
     "css",
     "vue",
     "python",
-    "json"
+    "json",
+    "c"
   ],
 
   "eslint.nodePath": "/home/fbaltor/.nvm/versions/node/v14.2.0/lib/node_modules",
@@ -22,11 +23,24 @@
     "workspaceFolder": true
   },
 
-  "python.jediEnabled": true,
-  "python.jediPath": "/home/fbaltor/.local/lib/python3.9/site-packages",
-  "python.linting.flake8Enabled": true,
-  "python.linting.pylintEnabled": false,
-  "python.linting.pep8Enabled": false,
-  "python.linting.enabled": true,
-  "python.formatting.provider": "black"
+  // coc-pyright configurations
+  "python.linting.mypyEnabled": true,
+  "clangd.path": "/home/fbaltor/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd",
+
+  // languageserver
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "rootPatterns": [".ccls-root", "compile_commands.json"],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "client": {
+          "snippetSupport": true
+        }
+      }
+    }
+  }
 }

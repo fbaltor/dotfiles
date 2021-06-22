@@ -1,5 +1,10 @@
 " set leader key
 let mapleader = "\<space>"
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
+set mouse=a
 
 syntax enable
 set hidden
@@ -52,6 +57,5 @@ runtime macros/matchit.vim
 " set filetype
 ":filetype plugin on
 
-let g:vim_json_syntax_conceal = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
+au FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyrightconfig.json']
+
