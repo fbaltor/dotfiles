@@ -59,3 +59,4 @@ runtime macros/matchit.vim
 
 au FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyrightconfig.json']
 
+set backupcopy=yes

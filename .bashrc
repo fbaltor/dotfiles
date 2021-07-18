@@ -186,3 +186,8 @@ armageddon() {
 # Check $HOME/.scripts for custom commands and bash snippet
 
 alias git-stats='$HOME/git-quick-stats/git-quick-stats'
+
+export DENO_INSTALL="/home/fbaltor/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+alias yacc="bison"
