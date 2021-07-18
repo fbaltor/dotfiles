@@ -191,3 +191,5 @@ export DENO_INSTALL="/home/fbaltor/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 alias yacc="bison"
+
+source bash_completion_tmux.sh
