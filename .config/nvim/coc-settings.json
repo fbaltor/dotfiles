@@ -11,13 +11,13 @@
     "vue",
     "python",
     "json",
-    "c"
+    "c",
+    "cpp",
+    "jsx",
   ],
 
-  "eslint.nodePath": "/home/fbaltor/.nvm/versions/node/v14.2.0/lib/node_modules",
-
   "prettier.singleQuote": true,
-  "prettier.eslintIntegration": true,
+  "prettier.eslintIntegration": false,
 
   "go.disable": {
     "workspaceFolder": true

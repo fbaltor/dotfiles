@@ -8,6 +8,7 @@ Plug 'gregsexton/MatchTag'
 Plug 'Yggdroot/indentLine'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'alvan/vim-closetag'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'Vimjas/vim-python-pep8-indent'
 "Plug 'chrisbra/csv.vim'
 

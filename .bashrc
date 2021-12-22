@@ -1,3 +1,8 @@
+# Profiling [START]
+#PS4='+ $(date "+%s.%N")\011 '
+#exec 3>&2 2>/tmp/bashstart.$$.log
+#set -x
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -134,9 +139,6 @@ alias psudo='sudo env PATH=$PATH HOME=$HOME'
 export GOPATH=$HOME/go/
 export PATH=$PATH:$GOPATH/bin
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias dgit='/usr/bin/git --git-dir=$HOME/.dgit --work-tree=$HOME'
 
@@ -144,20 +146,15 @@ alias dgit='/usr/bin/git --git-dir=$HOME/.dgit --work-tree=$HOME'
 export NVIM_COC_LOG_LEVEL=debug
 
 alias s='source $HOME/.bashrc'
-alias n='nvim'
 alias i='ipython'
-alias nb='nvim ~/.bashrc'
+alias nb='n ~/.bashrc'
 alias ..='cd ..'
-alias admin='psql -h localhost -p 5432 -U admin -d'
 
 export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH="$PATH:~/azuredatastudio-linux-x64"
 
 export XDG_CONFIG_HOME=$HOME/.config
-
-INSTANCE_CONNECTION_NAME=deepesg:us-central1:deepesg-database
-alias proxy-gcp='$HOME/deep/apps/gcp/proxy/cloud_sql_proxy -instances=$INSTANCE_CONNECTION_NAME=tcp:5432'
 
 export VERSION_ID="20.04"
 
@@ -167,8 +164,6 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 export KBD_BACKLIGHT="/sys/devices/plat^Crm/dell-laptop/leds/dell\:\:kbd_backlight/stop_timeout"
-
-alias kc='gcloud compute ssh --project=deepesg --zone=southamerica-east1-b keycloak-sa-2'
 
 removecontainers() {
     docker stop $(docker ps -aq)
@@ -192,4 +187,26 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 alias yacc="bison"
 
-source bash_completion_tmux.sh
+# Profiling [END]
+#set +x
+#exec 2>&3 3>&-
+
+alias chrome='google-chrome --allow-file-access-from-files'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+alias glab='g++ -std=c++11 -O2 -Wall -pedantic'
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias n="nvim"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+fif() {
+  grep --line-buffered --color=never -r "" * | fzf
+}

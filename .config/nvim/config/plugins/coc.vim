@@ -55,7 +55,7 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> gd :call CocAction('jumpDefinition', 'split')<cr>
+nmap <silent> gd :call CocAction('jumpDefinition', 'vertical-split')<cr>
 nmap <silent> gy :call CocAction('jumpTypeDefinition', 'vsplit')<cr>
 nmap <silent> gi :call CocAction('jumpImplementation', 'vsplit')<cr>
 nmap <silent> gr :call CocAction('jumpReferences', 'vsplit')<cr>
