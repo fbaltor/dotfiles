@@ -201,6 +201,8 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+#export NPM_HOME="$HOME/.config/nvm/versions/node/v14.18.1/bin/npm"
+
 alias n="nvim"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -210,3 +212,30 @@ export SDKMAN_DIR="$HOME/.sdkman"
 fif() {
   grep --line-buffered --color=never -r "" * | fzf
 }
+
+validate_node_installation() {
+  local pkg_manager="$1"
+  local manager_home
+  manager_home="$($pkg_manager config get prefix 2>/dev/null)"
+
+  if [ ! -d "$manager_home" ] || [ ! -w "$manager_home" ]; then
+    echo "[ERROR] Unable to install without administrative privilages. Please set you NPM_HOME correctly and try again."
+  fi
+
+  echo "ACABOU"
+}
+
+install_nodejs_deps() {
+  local -a pkg_managers=("yarn" "npm")
+  for pkg_manager in "${pkg_managers[@]}"; do
+    if command -v "$pkg_manager" &>/dev/null; then
+      __validate_node_installation "$pkg_manager"
+      eval "__install_nodejs_deps_$pkg_manager"
+      return
+    fi
+  done
+  print_missing_dep_msg "${pkg_managers[@]}"
+  exit 1
+}
+
+. "$HOME/.cargo/env"

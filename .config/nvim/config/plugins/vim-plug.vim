@@ -9,6 +9,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'alvan/vim-closetag'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " We recommend updating the parsers on update
 "Plug 'Vimjas/vim-python-pep8-indent'
 "Plug 'chrisbra/csv.vim'
 
