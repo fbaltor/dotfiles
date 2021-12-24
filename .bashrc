@@ -147,7 +147,7 @@ export NVIM_COC_LOG_LEVEL=debug
 
 alias s='source $HOME/.bashrc'
 alias i='ipython'
-alias nb='n ~/.bashrc'
+alias nb='nvim ~/.bashrc'
 alias ..='cd ..'
 
 export PATH="$PATH:/opt/mssql-tools/bin"
@@ -201,7 +201,9 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias n="nvim"
+#export NPM_HOME="$HOME/.config/nvm/versions/node/v14.18.1/bin/npm"
+
+alias n="nvim --clean"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -210,3 +212,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 fif() {
   grep --line-buffered --color=never -r "" * | fzf
 }
+
+. "$HOME/.cargo/env"
