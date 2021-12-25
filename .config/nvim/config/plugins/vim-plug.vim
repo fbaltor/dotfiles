@@ -2,7 +2,7 @@
 call plug#begin()
 
 Plug 'rakr/vim-one' " Simple colorscheme/theme
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
 Plug 'sheerun/vim-polyglot' " Better syntax support
 Plug 'gregsexton/MatchTag'
 Plug 'Yggdroot/indentLine'
