@@ -12,7 +12,9 @@
 !.config/
 .config/*
 !.config/nvim/
-.config/nvim/*
-!.config/nvim/init.vim
-!.config/nvim/coc-settings.json
-!.config/nvim/config/
+
+!.local/
+.local/*
+!.local/share/
+.local/share/*
+!.local/share/nvim/site
