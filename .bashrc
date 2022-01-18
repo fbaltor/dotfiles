@@ -127,8 +127,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=$PATH:$HOME/tools/neovim/
-
 # setting go tools available for $PATH
 export PATH=$PATH:/usr/local/go/bin
 
@@ -139,16 +137,9 @@ alias psudo='sudo env PATH=$PATH HOME=$HOME'
 export GOPATH=$HOME/go/
 export PATH=$PATH:$GOPATH/bin
 
-
 alias dgit='/usr/bin/git --git-dir=$HOME/.dgit --work-tree=$HOME'
 
-# NEOVIM: changing log level of coc.nvim
-export NVIM_COC_LOG_LEVEL=debug
-
 alias s='source $HOME/.bashrc'
-alias i='ipython'
-alias nb='nvim ~/.bashrc'
-alias ..='cd ..'
 
 export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH="$PATH:/opt/mssql-tools/bin"
@@ -160,8 +151,6 @@ export VERSION_ID="20.04"
 
 alias lr='ls -R'
 
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 
 export KBD_BACKLIGHT="/sys/devices/plat^Crm/dell-laptop/leds/dell\:\:kbd_backlight/stop_timeout"
 
@@ -195,15 +184,11 @@ alias chrome='google-chrome --allow-file-access-from-files'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-alias glab='g++ -std=c++11 -O2 -Wall -pedantic'
-
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #export NPM_HOME="$HOME/.config/nvm/versions/node/v14.18.1/bin/npm"
-
-alias n="nvim --clean"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
