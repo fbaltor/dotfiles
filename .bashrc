@@ -188,8 +188,6 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#export NPM_HOME="$HOME/.config/nvm/versions/node/v14.18.1/bin/npm"
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -198,4 +196,9 @@ fif() {
   grep --line-buffered --color=never -r "" * | fzf
 }
 
-. "$HOME/.cargo/env"
+alias nvim='$HOME/neovim/bin/nvim'
+
+#Setup flutter path
+export PATH=$PATH:$HOME/flutter/bin
+
+export EDITOR='$HOME/neovim/bin/nvim'
