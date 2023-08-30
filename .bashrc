@@ -130,7 +130,7 @@ fi
 # setting go tools available for $PATH
 export PATH=$PATH:/usr/local/go/bin
 
-# make $PATH and $HOME available for sudo 
+# make $PATH and $HOME available for sudo
 alias psudo='sudo env PATH=$PATH HOME=$HOME'
 
 # setting $GOPATH and making available for $PATH
@@ -184,21 +184,88 @@ alias chrome='google-chrome --allow-file-access-from-files'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 fif() {
-  grep --line-buffered --color=never -r "" * | fzf
+  grep --line-buffered --color=never -r --exclude-dir=node_modules "" * | fzf
 }
 
-alias nvim='$HOME/neovim/bin/nvim'
+#  Setting neovim
+NVIM_PATH='$HOME/neovim/build/bin/nvim'
+alias nvim=$NVIM_PATH
 
-#Setup flutter path
+# Setting editors
+export GIT_EDITOR=vi
+
+# Setup flutter path
 export PATH=$PATH:$HOME/flutter/bin
 
-export EDITOR='$HOME/neovim/bin/nvim'
+. "$HOME/.cargo/env"
+# source /home/fbaltor/alacritty/extra/completions/alacritty.bash
+
+# Setup pyenv path
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+# Setup bun path
+export BUN_INSTALL="/home/fbaltor/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
+if [ -n "$PYTHONPATH" ]; then
+    export PYTHONPATH='/home/fbaltor/.local/share/pdm/venv/lib/python3.10/site-packages/pdm/pep582':$PYTHONPATH
+else
+    export PYTHONPATH='/home/fbaltor/.local/share/pdm/venv/lib/python3.10/site-packages/pdm/pep582'
+fi
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+# Extended regex
+shopt -s extglob
+
+# BATTERY COMMANDS
+# Show battery status
+alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+# Trigger battery charge keeping the custom mode limits
+alias charge='smbios-battery-ctl --set-charging-mode=standard && smbios-battery-ctl --set-charging-mode=custom'
+# TODO: check if the command below works
+# Trigger express battery charge keeping the custom mode limits
+# alias charge-quickly='smbios-battery-ctl --set-charging-mode=express && smbios-battery-ctl --set-charging-mode=custom'
+
+# Chromium latest
+alias gcl='$HOME/chromium-latest-linux/run.sh'
+
+# depot_tools
+export PATH="$PATH:$HOME/depot_tools"
+
+# Disabling Google API keys on Chromium
+export GOOGLE_API_KEY="no"
+export GOOGLE_DEFAULT_CLIENT_ID="no"
+export GOOGLE_DEFAULT_CLIENT_SECRET="no"
+
+# Addind chromedriver to PATH
+export PATH="$PATH:/opt/chromedriver/chromedriver"
+
+# pnpm
+export PNPM_HOME="/home/fbaltor/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# flutter
+export PATH="$PATH:/home/fbaltor/flutter/bin"
+# flutter end
+
+# fnm
+export PATH="/home/fbaltor/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
+# Bun debug
+export PATH="$PATH:/home/fbaltor/bun/packages/debug-bun-linux-x64"
+
+# Deno debug
+alias deno-debug="$HOME/deno/target/debug/deno"

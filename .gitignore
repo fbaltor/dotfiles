@@ -18,3 +18,7 @@
 !.local/share/
 .local/share/*
 !.local/share/nvim/site
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
