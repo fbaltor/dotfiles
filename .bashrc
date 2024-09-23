@@ -20,9 +20,21 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+# ETERNAL history
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+# # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# HISTSIZE=10000
+# HISTFILESIZE=20000
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -184,17 +196,12 @@ alias chrome='google-chrome --allow-file-access-from-files'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 fif() {
   grep --line-buffered --color=never -r --exclude-dir=node_modules "" * | fzf
 }
 
 #  Setting neovim
-NVIM_PATH='$HOME/neovim/build/bin/nvim'
+NVIM_PATH='/opt/nvim-linux64/bin/nvim'
 alias nvim=$NVIM_PATH
 
 # Setting editors
@@ -207,9 +214,9 @@ export PATH=$PATH:$HOME/flutter/bin
 # source /home/fbaltor/alacritty/extra/completions/alacritty.bash
 
 # Setup pyenv path
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Setup bun path
 export BUN_INSTALL="/home/fbaltor/.bun"
@@ -231,8 +238,9 @@ shopt -s extglob
 # BATTERY COMMANDS
 # Show battery status
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+# TODO: this doesn't work...
 # Trigger battery charge keeping the custom mode limits
-alias charge='smbios-battery-ctl --set-charging-mode=standard && smbios-battery-ctl --set-charging-mode=custom'
+# alias charge='sudo smbios-battery-ctl --set-charging-mode=standard && sudo smbios-battery-ctl --set-charging-mode=custom'
 # TODO: check if the command below works
 # Trigger express battery charge keeping the custom mode limits
 # alias charge-quickly='smbios-battery-ctl --set-charging-mode=express && smbios-battery-ctl --set-charging-mode=custom'
@@ -269,3 +277,30 @@ export PATH="$PATH:/home/fbaltor/bun/packages/debug-bun-linux-x64"
 
 # Deno debug
 alias deno-debug="$HOME/deno/target/debug/deno"
+
+# fnm
+export PATH="/home/fbaltor/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+alias ltspice="wine $HOME/.wine/drive_c/Program\ Files/LTC/LTSpiceXVII/XVIIx64.exe"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/fbaltor/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/fbaltor/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<
+
+alias watchcore="watch -n 2 sensors -A coretemp-isa-0000"

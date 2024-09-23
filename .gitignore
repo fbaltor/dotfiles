@@ -8,6 +8,7 @@
 !README.md
 
 !.bashrc
+!.bash_profile
 
 !.config/
 .config/*
