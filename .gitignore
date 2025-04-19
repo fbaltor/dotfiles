@@ -14,6 +14,10 @@
 .config/*
 !.config/nvim/
 
+!.config/alacritty/
+.config/alacritty/*
+!.config/alacritty/alacritty.toml
+
 !.local/
 .local/*
 !.local/share/

@@ -1,0 +1,11 @@
+[terminal]
+[terminal.shell]
+program = "/usr/bin/tmux"
+
+[keyboard]
+bindings = [{ key = "F11", action = "ToggleFullscreen" }]
+
+[general]
+import = [
+#  "~/.config/alacritty/themes/themes/solarized_light.toml",
+]

@@ -1,8 +1,6 @@
 export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH="$PATH:/opt/mssql-tools/bin"
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
 source "$HOME/.bashrc"
 . "$HOME/.cargo/env"
 eval "$(/home/fbaltor/.linuxbrew/bin/brew shellenv)"
