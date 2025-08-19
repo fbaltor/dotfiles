@@ -7,5 +7,5 @@ bindings = [{ key = "F11", action = "ToggleFullscreen" }]
 
 [general]
 import = [
-#  "~/.config/alacritty/themes/themes/solarized_light.toml",
+ # "~/.config/alacritty/themes/themes/solarized_light.toml",
 ]

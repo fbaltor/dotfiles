@@ -60,7 +60,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -72,19 +72,69 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
+export color_prompt
 
-if [ "$color_prompt" = yes ]; then
-
-  if [ -a ~/.git-prompt.sh ]; then
+# Load git prompt support once
+if [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[33m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
-  else
-      PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-  fi
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    GIT_PS1_SHOWDIRTYSTATE=1
 fi
-unset color_prompt force_color_prompt
+
+# Prompt configuration
+
+# Colors
+GREEN='\[\033[01;32m\]'
+BLUE='\[\033[01;34m\]'
+GOLD='\[\033[33m\]'
+RESET='\[\033[00m\]'
+
+# Load git prompt support once
+if [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+    GIT_PS1_SHOWDIRTYSTATE=1
+fi
+
+# Track current prompt state
+PROMPT_STATE=${PROMPT_STATE:-"minimal"}
+
+# Function to actually build PS1 dynamically
+build_prompt() {
+    case "$PROMPT_STATE" in
+        long)
+            if [ "$color_prompt" = yes ]; then
+                if type __git_ps1 &>/dev/null; then
+                    PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u${RESET}:${BLUE}\w${GOLD}$(__git_ps1 ' (%s)')${RESET}\$ "
+                else
+                    PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u:${BLUE}\w${RESET}\$ "
+                fi
+            else
+                PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+            fi
+            ;;
+        minimal)
+            if [ "$color_prompt" = yes ]; then
+                PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u:${BLUE}\W${RESET}\$ "
+            else
+                PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
+            fi
+            ;;
+    esac
+}
+
+# PROMPT_COMMAND is executed before each prompt → recomputes PS1
+PROMPT_COMMAND=build_prompt
+
+# Toggle function
+toggle_prompt() {
+    local force_state="$1"
+    if [ "$force_state" = "long" ] || ([ -z "$force_state" ] && [ "$PROMPT_STATE" = "minimal" ]); then
+        PROMPT_STATE="long"
+    else
+        PROMPT_STATE="minimal"
+    fi
+}
+
+# unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -201,8 +251,8 @@ fif() {
 }
 
 #  Setting neovim
-NVIM_PATH='/opt/nvim-linux64/bin/nvim'
-alias nvim=$NVIM_PATH
+# NVIM_PATH='/opt/nvim-linux64/bin/nvim'
+# alias nvim=$NVIM_PATH
 
 # Setting editors
 export GIT_EDITOR=vi
@@ -330,3 +380,6 @@ if [ -f "/home/fbaltor/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+
+complete -C /usr/bin/terraform terraform
+complete -C /usr/local/bin/aws_completer aws
