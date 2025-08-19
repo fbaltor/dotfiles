@@ -95,7 +95,7 @@ if [ -f ~/.git-prompt.sh ]; then
 fi
 
 # Track current prompt state
-PROMPT_STATE=${PROMPT_STATE:-"minimal"}
+PROMPT_STATE=${PROMPT_STATE:-"long"}
 
 # Function to actually build PS1 dynamically
 build_prompt() {
@@ -383,3 +383,34 @@ fi
 
 complete -C /usr/bin/terraform terraform
 complete -C /usr/local/bin/aws_completer aws
+
+# toggle_theme() {
+#   CONFIG="$HOME/.config/alacritty/alacritty.toml"
+#   THEME_STATE="$HOME/.config/theme_state"
+#
+#   if grep -q '^\s*#\s*".*solarized_light.toml",' "$CONFIG"; then
+#     sed -i 's|^\s*#\s*"\(.*solarized_light.toml\)",| "\1",|' "$CONFIG"
+#     echo "light" > "$THEME_STATE"
+#   else
+#     sed -i 's|^\s*"\(.*solarized_light.toml\)",| # "\1",|' "$CONFIG"
+#     echo "dark" > "$THEME_STATE"
+#   fi
+# }
+
+toggle_theme() {
+  CONFIG="$HOME/.config/alacritty/alacritty.toml"
+  THEME_STATE="$HOME/.config/theme_state"
+
+  if grep -q '^\s*#\s*".*solarized_light.toml",' "$CONFIG"; then
+    # Currently commented → DARK
+    sed -i 's|^\s*#\s*"\(.*solarized_light.toml\)",| "\1",|' "$CONFIG"
+    echo "light" > "$THEME_STATE"
+  elif grep -q '^\s*".*solarized_light.toml",' "$CONFIG"; then
+    # Currently uncommented → LIGHT
+    sed -i 's|^\s*"\(.*solarized_light.toml\)",| # "\1",|' "$CONFIG"
+    echo "dark" > "$THEME_STATE"
+  else
+    echo "Error: could not detect theme line in $CONFIG"
+    return 1
+  fi
+}
