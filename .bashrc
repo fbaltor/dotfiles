@@ -1,4 +1,4 @@
-# Profiling [START]
+#aaaaa Profiling [START]
 #PS4='+ $(date "+%s.%N")\011 '
 #exec 3>&2 2>/tmp/bashstart.$$.log
 #set -x
@@ -9,8 +9,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -54,7 +54,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -64,21 +64,15 @@ force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 export color_prompt
-
-# Load git prompt support once
-if [ -f ~/.git-prompt.sh ]; then
-    source ~/.git-prompt.sh
-    GIT_PS1_SHOWDIRTYSTATE=1
-fi
 
 # Prompt configuration
 
@@ -100,24 +94,24 @@ PROMPT_STATE=${PROMPT_STATE:-"long"}
 # Function to actually build PS1 dynamically
 build_prompt() {
     case "$PROMPT_STATE" in
-        long)
-            if [ "$color_prompt" = yes ]; then
-                if type __git_ps1 &>/dev/null; then
-                    PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u${RESET}:${BLUE}\w${GOLD}$(__git_ps1 ' (%s)')${RESET}\$ "
-                else
-                    PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u:${BLUE}\w${RESET}\$ "
-                fi
+    long)
+        if [ "$color_prompt" = yes ]; then
+            if type __git_ps1 &>/dev/null; then
+                PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u${RESET}:${BLUE}\w${GOLD}$(__git_ps1 ' (%s)')${RESET}\$ "
             else
-                PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+                PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u:${BLUE}\w${RESET}\$ "
             fi
-            ;;
-        minimal)
-            if [ "$color_prompt" = yes ]; then
-                PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u:${BLUE}\W${RESET}\$ "
-            else
-                PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
-            fi
-            ;;
+        else
+            PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+        fi
+        ;;
+    minimal)
+        if [ "$color_prompt" = yes ]; then
+            PS1="${debian_chroot:+($debian_chroot)}${GREEN}\u:${BLUE}\W${RESET}\$ "
+        else
+            PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
+        fi
+        ;;
     esac
 }
 
@@ -138,11 +132,10 @@ toggle_prompt() {
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm* | rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
-*)
-    ;;
+*) ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -161,7 +154,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alFrt'
+alias ll='ls -AlFrt'
 alias la='ls -A'
 alias l='ls --format=single-column -Art'
 
@@ -182,11 +175,11 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 # setting go tools available for $PATH
@@ -212,7 +205,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export VERSION_ID="20.04"
 
 alias lr='ls -R'
-
 
 export KBD_BACKLIGHT="/sys/devices/plat^Crm/dell-laptop/leds/dell\:\:kbd_backlight/stop_timeout"
 
@@ -247,7 +239,7 @@ alias chrome='google-chrome --allow-file-access-from-files'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 fif() {
-  grep --line-buffered --color=never -r --exclude-dir=node_modules "" * | fzf
+    grep --line-buffered --color=never -r --exclude-dir=node_modules "" * | fzf
 }
 
 #  Setting neovim
@@ -319,7 +311,7 @@ export PATH="$PATH:/home/fbaltor/flutter/bin"
 
 # fnm
 export PATH="/home/fbaltor/.local/share/fnm:$PATH"
-eval "`fnm env`"
+eval "$(fnm env)"
 
 # Bun debug
 export PATH="$PATH:/home/fbaltor/bun/packages/debug-bun-linux-x64"
@@ -329,7 +321,7 @@ alias deno-debug="$HOME/deno/target/debug/deno"
 
 # fnm
 export PATH="/home/fbaltor/.local/share/fnm:$PATH"
-eval "`fnm env`"
+eval "$(fnm env)"
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -342,12 +334,11 @@ alias ltspice="wine $HOME/.wine/drive_c/Program\ Files/LTC/LTSpiceXVII/XVIIx64.e
 # !! Contents within this block are managed by juliaup !!
 
 case ":$PATH:" in
-    *:/home/fbaltor/.juliaup/bin:*)
-        ;;
+*:/home/fbaltor/.juliaup/bin:*) ;;
 
-    *)
-        export PATH=/home/fbaltor/.juliaup/bin${PATH:+:${PATH}}
-        ;;
+*)
+    export PATH=/home/fbaltor/.juliaup/bin${PATH:+:${PATH}}
+    ;;
 esac
 
 # <<< juliaup initialize <<<
@@ -357,13 +348,13 @@ alias watchcore="watch -n 2 sensors -A coretemp-isa-0000"
 # fnm
 FNM_PATH="/home/fbaltor/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+    export PATH="$FNM_PATH:$PATH"
+    eval "$(fnm env)"
 fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/fbaltor/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/fbaltor/miniforge3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -380,37 +371,37 @@ if [ -f "/home/fbaltor/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
-
 complete -C /usr/bin/terraform terraform
 complete -C /usr/local/bin/aws_completer aws
 
-# toggle_theme() {
-#   CONFIG="$HOME/.config/alacritty/alacritty.toml"
-#   THEME_STATE="$HOME/.config/theme_state"
-#
-#   if grep -q '^\s*#\s*".*solarized_light.toml",' "$CONFIG"; then
-#     sed -i 's|^\s*#\s*"\(.*solarized_light.toml\)",| "\1",|' "$CONFIG"
-#     echo "light" > "$THEME_STATE"
-#   else
-#     sed -i 's|^\s*"\(.*solarized_light.toml\)",| # "\1",|' "$CONFIG"
-#     echo "dark" > "$THEME_STATE"
-#   fi
-# }
-
 toggle_theme() {
-  CONFIG="$HOME/.config/alacritty/alacritty.toml"
-  THEME_STATE="$HOME/.config/theme_state"
+    local current_link="$HOME/.config/alacritty/current-theme.toml"
+    local current_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
 
-  if grep -q '^\s*#\s*".*solarized_light.toml",' "$CONFIG"; then
-    # Currently commented → DARK
-    sed -i 's|^\s*#\s*"\(.*solarized_light.toml\)",| "\1",|' "$CONFIG"
-    echo "light" > "$THEME_STATE"
-  elif grep -q '^\s*".*solarized_light.toml",' "$CONFIG"; then
-    # Currently uncommented → LIGHT
-    sed -i 's|^\s*"\(.*solarized_light.toml\)",| # "\1",|' "$CONFIG"
-    echo "dark" > "$THEME_STATE"
-  else
-    echo "Error: could not detect theme line in $CONFIG"
-    return 1
-  fi
+    if [[ "$current_scheme" == "'default'" ]]; then
+        # Switch to dark
+        ln -sf "themes/themes/solarized_dark.toml" "$current_link"
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+        echo "Switched to dark theme"
+    else
+        # Switch to light
+        ln -sf "themes/themes/solarized_light.toml" "$current_link"
+        gsettings set org.gnome.desktop.interface color-scheme 'default'
+        echo "Switched to light theme"
+    fi
 }
+
+get_theme() {
+    local current_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
+    if [[ "$current_scheme" == "'default'" ]]; then
+        echo "light"
+    else
+        echo "dark"
+    fi
+}
+
+alias tools='~/scripts/tools.sh'
+alias tools_fast='~/scripts/tools_fast.sh'
+
+# add Pulumi to the PATH
+export PATH=$PATH:/home/fbaltor/.pulumi/bin

@@ -6,6 +6,4 @@ program = "/usr/bin/tmux"
 bindings = [{ key = "F11", action = "ToggleFullscreen" }]
 
 [general]
-import = [
- # "~/.config/alacritty/themes/themes/solarized_light.toml",
-]
+import = ["~/.config/alacritty/current-theme.toml"]
