@@ -18,6 +18,12 @@
 .config/alacritty/*
 !.config/alacritty/alacritty.toml
 
+!.config/ghostty/
+.config/ghostty/*
+!.config/ghostty/config
+
+!.config/theme/
+
 !.local/
 .local/*
 !.local/share/

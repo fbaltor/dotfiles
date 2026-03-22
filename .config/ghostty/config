@@ -1,0 +1,43 @@
+confirm-close-surface = false
+bell-features = no-attention,no-title
+theme = iTerm2 Solarized Light
+
+# Splits (matching tmux defaults)
+keybind = alt+space>shift+digit_5=new_split:right
+keybind = alt+space>shift+quote=new_split:down
+
+# Navigate panes
+keybind = alt+space>h=goto_split:left
+keybind = alt+space>j=goto_split:bottom
+keybind = alt+space>k=goto_split:top
+keybind = alt+space>l=goto_split:right
+
+# Close pane
+keybind = alt+space>x=close_surface
+
+# Zoom
+keybind = alt+space>z=toggle_split_zoom
+
+# Tabs (matching tmux window commands)
+keybind = alt+space>c=new_tab
+keybind = alt+space>n=next_tab
+keybind = alt+space>p=previous_tab
+keybind = alt+space>digit_1=goto_tab:1
+keybind = alt+space>digit_2=goto_tab:2
+keybind = alt+space>digit_3=goto_tab:3
+keybind = alt+space>digit_4=goto_tab:4
+keybind = alt+space>digit_5=goto_tab:5
+keybind = alt+space>digit_6=goto_tab:6
+keybind = alt+space>digit_7=goto_tab:7
+keybind = alt+space>digit_8=goto_tab:8
+keybind = alt+space>digit_9=goto_tab:9
+
+# Move tab left/right
+keybind = alt+space>shift+comma=move_tab:-1
+keybind = alt+space>shift+period=move_tab:1
+
+# Equalize splits
+keybind = alt+space>equal=equalize_splits
+
+# Fullscreen
+keybind = f11=toggle_fullscreen

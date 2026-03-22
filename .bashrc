@@ -295,7 +295,7 @@ alias gcl='$HOME/chromium-latest-linux/run.sh'
 export PATH="$PATH:$HOME/depot_tools"
 
 # Disabling Google API keys on Chromium
-export GOOGLE_API_KEY="no"
+# export GOOGLE_API_KEY="no"
 export GOOGLE_DEFAULT_CLIENT_ID="no"
 export GOOGLE_DEFAULT_CLIENT_SECRET="no"
 
@@ -376,31 +376,8 @@ fi
 complete -C /usr/bin/terraform terraform
 complete -C /usr/local/bin/aws_completer aws
 
-toggle_theme() {
-    local current_link="$HOME/.config/alacritty/current-theme.toml"
-    local current_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
-
-    if [[ "$current_scheme" == "'default'" ]]; then
-        # Switch to dark
-        ln -sf "themes/themes/solarized_dark.toml" "$current_link"
-        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-        echo "Switched to dark theme"
-    else
-        # Switch to light
-        ln -sf "themes/themes/solarized_light.toml" "$current_link"
-        gsettings set org.gnome.desktop.interface color-scheme 'default'
-        echo "Switched to light theme"
-    fi
-}
-
-get_theme() {
-    local current_scheme=$(gsettings get org.gnome.desktop.interface color-scheme)
-    if [[ "$current_scheme" == "'default'" ]]; then
-        echo "light"
-    else
-        echo "dark"
-    fi
-}
+# Theme switching (toggle_theme, get_theme)
+source "$HOME/.config/theme/theme.sh"
 
 alias tools='~/scripts/tools.sh'
 alias tools_fast='~/scripts/tools_fast.sh'
@@ -438,3 +415,11 @@ if type complete &>/dev/null; then
     complete -o default -F _pnpm_completion pnpm
 fi
 ###-end-pnpm-completion-###
+
+# opencode
+export PATH=/home/fbaltor/.opencode/bin:$PATH
+
+# Source API keys
+for envfile in ~/.config/env/*; do
+  [ -f "$envfile" ] && set -a && source "$envfile" && set +a
+done
