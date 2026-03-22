@@ -23,8 +23,8 @@ toggle_theme() {
         echo "Switched to light theme"
     fi
 
-    # Reload Ghostty config to apply the new theme
-    kill -SIGUSR2 $(pidof ghostty) 2>/dev/null
+    # Ghostty has no file watcher — SIGUSR2 is the official reload mechanism
+    pkill -SIGUSR2 ghostty 2>/dev/null
 }
 
 get_theme() {
