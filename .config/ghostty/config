@@ -1,5 +1,6 @@
 confirm-close-surface = false
 bell-features = no-attention,no-title
+scroll-on-output = false
 theme = iTerm2 Solarized Light
 
 # Splits (matching tmux defaults)
