@@ -2,6 +2,7 @@ confirm-close-surface = false
 bell-features = no-attention,no-title
 theme = iTerm2 Solarized Light
 scroll-to-bottom = no-output
+mouse-scroll-multiplier = discrete:0.05
 
 # Splits (matching tmux defaults)
 keybind = alt+space>shift+digit_5=new_split:right
@@ -42,3 +43,9 @@ keybind = alt+space>equal=equalize_splits
 
 # Fullscreen
 keybind = f11=toggle_fullscreen
+
+# Font size for all panes (ctrl+alt+plus/minus/zero)
+keybind = all:ctrl+alt+equal=increase_font_size:1
+keybind = all:ctrl+alt+plus=increase_font_size:1
+keybind = all:ctrl+alt+minus=decrease_font_size:1
+keybind = all:ctrl+alt+zero=reset_font_size
